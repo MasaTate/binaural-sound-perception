@@ -1,10 +1,3 @@
-"""
-Author: Arun Balajee Vasudevan
-Licensed under the CC BY-NC 4.0 license (https://creativecommons.org/licenses/by-nc/4.0/)
-"""
-"""
-training code
-"""
 from __future__ import absolute_import
 from __future__ import division
 import argparse
@@ -22,6 +15,14 @@ import network
 import optimizer_two5_SharedEnc as optimizer
 import cv2
 import numpy as np
+
+"""
+Author: Arun Balajee Vasudevan
+Licensed under the CC BY-NC 4.0 license (https://creativecommons.org/licenses/by-nc/4.0/)
+"""
+"""
+training code
+"""
 
 # Argument Parser
 parser = argparse.ArgumentParser(description='Semantic Segmentation')

@@ -6,6 +6,7 @@ Licensed under the CC BY-NC 4.0 license (https://creativecommons.org/licenses/by
 import pyaudio
 import wave
 import sys,glob,os,librosa
+import argparse
 
 # length of data to read.
 chunk = 1024
@@ -15,6 +16,10 @@ import pylab
 from scipy.io import wavfile
 from scipy.fftpack import fft
 import wavio
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--root",default='.',help="dataset root directory")
+args = parser.parse_args()
 
 audio_length=2;
 
@@ -57,10 +62,11 @@ def get_rms(tr):
     if tr==7:    return 53.75015494955412
     if tr==8:    return 44.507015861649144
 
-track=3;    ########### select the track 
+track=2;    ########### select the track 
 
 for sc in range(1,166):
-    fdir="./dataset_public/scene%04d/"%sc
+    subdir="/dataset_public/scene%04d/"%sc
+    fdir = args.root + subdir
     print(fdir)
     for g in glob.glob(fdir+"*.WAV"):
         audiofolder = g

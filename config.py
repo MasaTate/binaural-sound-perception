@@ -64,15 +64,15 @@ __C.STRICTBORDERCLASS = None
 #Attribute Dictionary for Dataset
 __C.DATASET = AttrDict()
 #360audio dataset Dir Location
-__C.DATASET.OMNIAUDIO_DIR = '/srv/beegfs02/scratch/language_vision/data/Sound_Event_Prediction/audio/dataset/outdoor/'
+__C.DATASET.OMNIAUDIO_DIR = '/work/masatate/dataset/dataset_public/'
 #Cityscapes Dir Location
-__C.DATASET.CITYSCAPES_DIR = ''
+__C.DATASET.CITYSCAPES_DIR = '/work/masatate/dataset/Cityscapes/'
 #SDC Augmented Cityscapes Dir Location
 __C.DATASET.CITYSCAPES_AUG_DIR = ''
 #Mapillary Dataset Dir Location
 __C.DATASET.MAPILLARY_DIR = ''
 #Kitti Dataset Dir Location
-__C.DATASET.KITTI_DIR = ''
+__C.DATASET.KITTI_DIR = '/work/masatate/dataset/KITTI/'
 #SDC Augmented Kitti Dataset Dir Location
 __C.DATASET.KITTI_AUG_DIR = ''
 #Camvid Dataset Dir Location

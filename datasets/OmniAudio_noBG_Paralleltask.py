@@ -178,7 +178,7 @@ def make_dataset(quality, mode,  fine_coarse_mult=6, cv_split=0):
     gtCoarse/gtCoarse/train_extra/augsburg
     """
     items = []
-    audioDict=np.load('/'.join(root.split('/')[:-2])+"/SoundEnergy_array_165scenes.npy");#print(audioDict)
+    audioDict=np.load('/'.join(root.split('/')[:-1])+"/SoundEnergy_165scenes.npy", allow_pickle=True);#print(audioDict)
     assert (quality == 'semantic' and mode in ['train', 'val'])
     if mode == 'train':
         for sc in range(1,115):
@@ -203,7 +203,7 @@ def make_dataset(quality, mode,  fine_coarse_mult=6, cv_split=0):
             img_path = os.path.join(root, img_dir_name,'bg.png')
             mask_postfix = '_mask.png';audio_postfix='.npy';
             for it_full in glob.glob(check_audioImg_path+"*.npy"):
-                #print(it_full)
+                print(it_full)
                 it = it_full.split('/')[-1].split('.')[0]
                 if it_full in audioDict.item()[sc]:
                     item = (img_path, os.path.join(mask_path, it+mask_postfix), os.path.join(Sem_mask_path, it+mask_postfix), os.path.join(audioImg_path, it+audio_postfix), os.path.join(audioImg_path6, it+audio_postfix), wavaudioImg_path+it+'.npy', wavaudioImg_path6+it+'.npy', wavaudioImg_path2+it+'.npy', wavaudioImg_path5+it+'.npy',mode)
@@ -332,7 +332,7 @@ class OmniAudio(data.Dataset):
 
     def __getitem__(self, index):
 
-        img_path, mask_path,sem_mask, audio1, audio6, audio_path1, audio_path6, audio_path2, audio_path5, mod = self.imgs[index]
+        img_path, mask_path, sem_mask, audio1, audio6, audio_path1, audio_path6, audio_path2, audio_path5, mod = self.imgs[index]
         img_name = img_path.split('/')[-2]+"_"+os.path.splitext(os.path.basename(audio1))[0]
 
         #### W/O Skip connection scratch training ####

@@ -39,8 +39,8 @@ thresh = 0.0002
 adict={};energyArr=[]
 
 for sc in range(1,166):
-    if sc<37:    fdir="/dataset/outdoor/scene"+str(sc)+"/"
-    else:    fdir="/dataset/outdoor/scene%04d/"%sc
+    if sc<37:    fdir="../../../../work/masatate/dataset/dataset_public/scene"+str(sc)+"/"
+    else:    fdir="../../../../work/masatate/dataset/dataset_public/scene%04d/"%sc
     adict[sc]=[];print(sc,len(glob.glob(fdir+"wavsplits/Track1/"+"*.npy")))
     for g in glob.glob(fdir+"wavsplits/Track1/"+"*.npy"):
         soundCH = np.load(g)
@@ -55,7 +55,7 @@ for sc in range(1,166):
         if energy>thresh:    adict[sc].append(fdir+"spectrograms/Track1/"+g.split('/')[-1].split('.')[0]+".npy")
 
 
-np.save('/srv/beegfs02/scratch/language_vision/data/Sound_Event_Prediction/audio/dataset/SoundEnergy_165scenes.npy',adict)
+np.save('../../../../work/masatate/dataset/dataset_public/SoundEnergy_165scenes.npy',adict)
 print("Saved sound scenes.")
 
 ### To plot the energy plot ###

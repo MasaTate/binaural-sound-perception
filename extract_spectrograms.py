@@ -6,6 +6,11 @@ Licensed under the CC BY-NC 4.0 license (https://creativecommons.org/licenses/by
 import pyaudio
 import wave
 import sys,glob,os,librosa
+import argparse
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--root",default=".",help="dataset root directory")
+args = parser.parse_args()
 
 # length of data to read.
 chunk = 1024
@@ -58,10 +63,11 @@ def get_rms(tr):
     if tr==7:    return 53.75015494955412
     if tr==8:    return 44.507015861649144
 
-track=3;    ########### select the track 
+track=7;    ########### select the track 
 
 for sc in range(1,166):
-    fdir="./dataset_public/scene%04d/"%sc
+    subdir="/dataset_public/scene%04d/"%sc
+    fdir=args.root + subdir
     print(fdir)
     for g in glob.glob(fdir+"*.WAV"):
         audiofolder = g
@@ -74,6 +80,9 @@ for sc in range(1,166):
         os.makedirs(save_dir)
     for i in sorted(glob.glob(fdir+"split_videoframes/*.png")):
         audio_start_time = int(i.split('_')[-1].split('.')[0])#random.uniform(0, 9.9 - self.opt.audio_length)
+        # Only odd number of video segments
+        if audio_start_time % 2 == 0:
+            continue
         audio_end_time = audio_start_time + audio_length
         audio_start = int(audio_start_time * rate)
         audio_end = audio_start + int(audio_length * rate)

@@ -1,10 +1,3 @@
-"""
-Author: Arun Balajee Vasudevan
-Licensed under the CC BY-NC 4.0 license (https://creativecommons.org/licenses/by-nc/4.0/)
-"""
-"""
-training code
-"""
 from __future__ import absolute_import
 from __future__ import division
 import argparse
@@ -27,7 +20,16 @@ import matplotlib as mpl
 import matplotlib.cm as cm
 
 from torch import nn
-sys.path.insert(0, './../../monodepth2-master/')
+
+"""
+Author: Arun Balajee Vasudevan
+Licensed under the CC BY-NC 4.0 license (https://creativecommons.org/licenses/by-nc/4.0/)
+"""
+"""
+training code
+"""
+
+sys.path.insert(0, './../monodepth2/')
 #from torchvision import transforms, datasets
 from layers import disp_to_depth
 
